@@ -3,7 +3,6 @@ import React from "react";
 
 class AddContact extends React.Component {
   state = {
-    id: "",
     name: "",
     email: "",
     number: "",
@@ -15,13 +14,13 @@ class AddContact extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    const { id, name, email, number } = this.state;
-    if (id === "" || name === "" || email === "" || number === "") {
+    const { name, email, number } = this.state;
+    if (name === "" || email === "" || number === "") {
       alert("Please fill in all fields");
       return;
     } else {
       this.props.addContact(this.state);
-      this.setState({ id: "", name: "", email: "", number: "" });
+      this.setState({ name: "", email: "", number: "" });
     }
   };
 
@@ -30,16 +29,6 @@ class AddContact extends React.Component {
       <div className="ui main">
         <h2>Add Contact</h2>
         <form className="ui form" onSubmit={this.handleSubmit}>
-          <div className="field">
-            <label htmlFor="id">Contact Id</label>
-            <input
-              type="number"
-              name="id"
-              value={this.state.id}
-              placeholder="Contact Id"
-              onChange={this.handleOnChange}
-            />
-          </div>
           <div className="field">
             <label htmlFor="name">Contact Name</label>
             <input
