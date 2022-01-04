@@ -1,6 +1,5 @@
 //Example Class Componment
 import React from "react";
-
 class AddContact extends React.Component {
   state = {
     name: "",
@@ -27,7 +26,9 @@ class AddContact extends React.Component {
   render() {
     return (
       <div className="ui main">
-        <h2>Add Contact</h2>
+        <h3>
+          <strong>Add Contact</strong>{" "}
+        </h3>
         <form className="ui form" onSubmit={this.handleSubmit}>
           <div className="field">
             <label htmlFor="name">Contact Name</label>
@@ -59,7 +60,12 @@ class AddContact extends React.Component {
               onChange={this.handleOnChange}
             />
           </div>
-          <button className="ui button blue">Save</button>
+          <button
+            className="ui button blue"
+            onClick={() => alert("Contact Saved")}
+          >
+            Save
+          </button>
         </form>
       </div>
     );
