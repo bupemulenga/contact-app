@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
+import { v4 as uuid } from "uuid";
 import "./App.css";
-import { uuid } from "uuidv4";
 import AddContact from "./components/AddContact";
 import ContactList from "./components/ContactList";
 import Header from "./components/Header";
@@ -10,9 +10,14 @@ function App() {
   const [contacts, setContacts] = useState([]);
 
   const addContact = (contact) => {
-    console.log(contact);
     setContacts([...contacts, { id: uuid(), ...contact }]);
-    console.log(contact.id);
+  };
+
+  const deleteContact = (id) => {
+    const newContactList = contacts.filter((contact) => {
+      return contact.id !== id;
+    });
+    setContacts(newContactList);
   };
 
   //Get our persisted contacts from localstorage and render them even after refreshing the page
@@ -32,7 +37,7 @@ function App() {
     <div className="ui container">
       <Header />
       <AddContact addContact={addContact} />
-      <ContactList contacts={contacts} />
+      <ContactList contacts={contacts} deleteContactFromList={deleteContact} />
     </div>
   );
 }

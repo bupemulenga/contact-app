@@ -13,6 +13,7 @@ export default function ContactCard(props) {
       <i
         className="trash middle aligned alternate outline icon"
         style={{ color: "red" }}
+        onClick={() => props.clickHandler(id)}
       ></i>
     </div>
   );
