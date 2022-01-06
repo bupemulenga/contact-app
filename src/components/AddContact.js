@@ -1,5 +1,6 @@
 //Example Class Componment
 import React from "react";
+
 class AddContact extends React.Component {
   state = {
     name: "",
@@ -20,6 +21,7 @@ class AddContact extends React.Component {
     } else {
       this.props.addContact(this.state);
       this.setState({ name: "", email: "", number: "" });
+      console.log(this.props.history);
     }
   };
 
@@ -60,12 +62,7 @@ class AddContact extends React.Component {
               onChange={this.handleOnChange}
             />
           </div>
-          <button
-            className="ui button blue"
-            onClick={() => alert("Contact Saved")}
-          >
-            Save
-          </button>
+          <button className="ui button blue">Save</button>
         </form>
       </div>
     );
